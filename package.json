@@ -1,0 +1,21 @@
+{
+  "name": "vueShortcut",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "watch": "nodemon -w src -e js,vue,css -w webpack.config.js -x yarn build",
+    "build": "webpack --mode development"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "css-loader": "^2.1.0",
+    "fuse.js": "^3.3.0",
+    "os": "^0.1.1",
+    "style-loader": "^0.23.1",
+    "vue": "^2.5.22",
+    "vue-loader": "^15.5.1",
+    "vue-template-compiler": "^2.5.22",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
+  }
+}

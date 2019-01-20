@@ -1,0 +1,34 @@
+.shortcut {
+    width: 550px;
+}
+
+.copy-element {
+  max-height: 450px;
+  overflow-y: scroll;
+}
+.copy-element__item {
+  padding: 16px 0px;
+  border-bottom: 1px solid #ddd;
+}
+
+.shortcut-name {
+  font-size: 22px;
+}
+
+.shortcut-command {
+  font-size: 17px;
+  padding-top: 6px;
+}
+.close-out {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+#cancel:hover {
+  opacity: 0.6;
+}
+
+.form-parent h1 {
+  padding-bottom: 10px;
+}

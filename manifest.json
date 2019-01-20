@@ -1,0 +1,21 @@
+{
+  "name" : "shortcutvue",
+  "host" : {
+    "app" : "XD",
+    "minVersion" : "13.0.0"
+  },
+  "description" : "Sample plugin for Adobe XD, providing starter project scaffolding.",
+  "id" : "4431d5b7",
+  "icons" : [ {
+    "path" : "images/icon.png",
+    "width" : 96,
+    "height" : 96
+  } ],
+  "uiEntryPoints" : [ {
+    "label" : "vuePlugin",
+    "type" : "menu",
+    "commandId" : "myPluginCommand",
+    "shortcut": { "mac": "Cmd+Shift+F", "win": "Ctrl+Shift+F" }
+  } ],
+  "version" : "1.0.0"
+}
