@@ -22,12 +22,13 @@
 </template>
 
 <script>
+  
   const os = require('os');
   let localData = null;
   let Fuse = require('fuse.js');
   let userOs = os.platform();
   let isMacUser = userOs === "darwin";
-  let fuse = new Fuse(localData, options = {
+  let options = {
     shouldSort: true,
     threshold: 0.6,
     location: 0,
@@ -35,17 +36,17 @@
     maxPatternLength: 32,
     minMatchCharLength: 0,
     keys: [ "name", "tags"]
-  });
+  }
+  let fuse = new Fuse(localData, options);
 
-if(isMacUser) {
-  localData = require('./macData.js');
-} else {
-  localData = require('./winData.js');
-}
+  // check if they're win or mac user
+  if(isMacUser) {
+    localData = require('./macData.js');
+  } else {
+    localData = require('./winData.js');
+  }
+  //
 
- 
-
-  
   module.exports = {
     props: {
       dialog: {
@@ -55,7 +56,7 @@ if(isMacUser) {
     data() {
       return {
         message: '',
-        items: localData //  array of local data (keyboard shortcuts)
+        items: localData //  array of local data 
       }
     },
     methods: {

@@ -2213,57 +2213,58 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 //
 //
 
-  const os = __webpack_require__(/*! os */ "os");
-  let localData = null;
-  let Fuse = __webpack_require__(/*! fuse.js */ "./node_modules/fuse.js/dist/fuse.js");
-  let userOs = os.platform();
-  let isMacUser = userOs === "darwin";
-  let fuse = new Fuse(localData, options = {
-    shouldSort: true,
-    threshold: 0.6,
-    location: 0,
-    distance: 10,
-    maxPatternLength: 32,
-    minMatchCharLength: 0,
-    keys: [ "name", "tags"]
-  });
 
+const os = __webpack_require__(/*! os */ "os");
+let localData = null;
+let Fuse = __webpack_require__(/*! fuse.js */ "./node_modules/fuse.js/dist/fuse.js");
+let userOs = os.platform();
+let isMacUser = userOs === "darwin";
+let options = {
+  shouldSort: true,
+  threshold: 0.6,
+  location: 0,
+  distance: 10,
+  maxPatternLength: 32,
+  minMatchCharLength: 0,
+  keys: [ "name", "tags"]
+}
+let fuse = new Fuse(localData, options);
+
+// check if they're win or mac user
 if(isMacUser) {
   localData = __webpack_require__(/*! ./macData.js */ "./src/macData.js");
 } else {
   localData = __webpack_require__(/*! ./winData.js */ "./src/winData.js");
 }
+//
 
- 
-
-  
-  module.exports = {
-    props: {
-      dialog: {
-          type: Object
-      }
+module.exports = {
+  props: {
+    dialog: {
+        type: Object
+    }
+  },
+  data() {
+    return {
+      message: '',
+      items: localData //  array of local data 
+    }
+  },
+  methods: {
+    close() {
+      this.dialog.close();
     },
-    data() {
-      return {
-        message: '',
-        items: localData //  array of local data (keyboard shortcuts)
+    submit : function(event) {
+      event.preventDefault();
+      fuse = new Fuse(localData, options);
+      if(this.message.length >= 1) {
+        this.items = fuse.search(this.message);
+      } else {
+        this.items = localData;
       }
-    },
-    methods: {
-      close() {
-        this.dialog.close();
-      },
-      submit : function(event) {
-        event.preventDefault();
-        fuse = new Fuse(localData, options);
-        if(this.message.length >= 1) {
-          this.items = fuse.search(this.message);
-        } else {
-          this.items = localData;
-        }
-      }
-    } 
-  }
+    }
+  } 
+}
 
 
 /***/ }),
