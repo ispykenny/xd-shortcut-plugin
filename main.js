@@ -96,7 +96,7 @@ module.exports =
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".shortcut {\n    width: 550px;\n}\n\n.copy-element {\n  max-height: 450px;\n  overflow-y: scroll;\n}\n.copy-element__item {\n  padding: 16px 0px;\n  border-bottom: 1px solid #ddd;\n}\n\n.shortcut-name {\n  font-size: 22px;\n}\n\n.shortcut-command {\n  font-size: 17px;\n  padding-top: 6px;\n}\n.close-out {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end;\n  padding-bottom: 10px;\n}\n#cancel:hover {\n  opacity: 0.6;\n}\n\n.form-parent h1 {\n  padding-bottom: 10px;\n}", ""]);
+exports.push([module.i, ".shortcut {\n    width: 550px;\n}\n\n.copy-element {\n  max-height: 450px;\n  overflow-y: scroll;\n}\n.copy-element__item {\n  padding: 16px 0px;\n  border-bottom: 1px solid #ddd;\n}\n\n.shortcut-name {\n  font-size: 22px;\n}\n\n.shortcut-command {\n  font-size: 17px;\n  padding-top: 6px;\n}\n.close-out {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end;\n  padding-bottom: 10px;\n}\n#cancel:hover {\n  opacity: 0.6;\n}\n\n.form-parent h1 {\n  padding-bottom: 10px;\n}\n\n.button-flex {\n  display: flex;\n  align-items: center;\n}", ""]);
 
 
 
@@ -2212,7 +2212,12 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
 
 const os = __webpack_require__(/*! os */ "os");
 let localData = null;
@@ -2248,11 +2253,16 @@ module.exports = {
     return {
       message: '',
       items: localData //  array of local data 
+     
     }
   },
   methods: {
     close() {
       this.dialog.close();
+    },
+    showAll: function() {
+      this.message = '';
+      this.items = localData;
     },
     submit : function(event) {
       event.preventDefault();
@@ -2314,7 +2324,7 @@ var render = function() {
           attrs: {
             id: "query",
             "uxp-quiet": "true",
-            placeholder: "Search XD Shortcut"
+            placeholder: "Search XD Shortcuts"
           },
           domProps: { value: _vm.message },
           on: {
@@ -2328,12 +2338,29 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c("div", { staticStyle: { width: "100px" } }, [
-          _c(
-            "button",
-            { attrs: { "uxp-variant": "cta" }, on: { click: _vm.submit } },
-            [_vm._v("Search")]
-          )
+        _c("div", { staticClass: "button-flex" }, [
+          (this.message.length >= 1
+          ? true
+          : false)
+            ? _c("div", { staticStyle: { width: "100px" } }, [
+                _c(
+                  "button",
+                  {
+                    attrs: { "uxp-primary": "cta" },
+                    on: { click: _vm.showAll }
+                  },
+                  [_vm._v("Show All")]
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticStyle: { width: "100px" } }, [
+            _c(
+              "button",
+              { attrs: { "uxp-variant": "cta" }, on: { click: _vm.submit } },
+              [_vm._v("Search")]
+            )
+          ])
         ])
       ])
     ]),
@@ -11123,7 +11150,7 @@ function getDialog() {
 
 module.exports = {
   commands: {
-    myPluginCommand: function () {
+    fetchShortCuts: function () {
       getDialog().showModal();
     }
   }

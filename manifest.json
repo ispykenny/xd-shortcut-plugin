@@ -1,10 +1,10 @@
 {
-  "name" : "shortcutvue",
+  "name" : "XD Keyboard Shortcuts",
   "host" : {
     "app" : "XD",
     "minVersion" : "13.0.0"
   },
-  "description" : "Sample plugin for Adobe XD, providing starter project scaffolding.",
+  "description" : "Quickly search any XD keyboard shortcut with this plugin. Use the shortcut Cmd+Shift+F for Mac and Ctrl+shift+F for Windows.",
   "id" : "4431d5b7",
   "icons" : [ {
     "path" : "images/icon.png",
@@ -12,9 +12,9 @@
     "height" : 96
   } ],
   "uiEntryPoints" : [ {
-    "label" : "vuePlugin",
+    "label" : "XD Keyboard Shortcuts",
     "type" : "menu",
-    "commandId" : "myPluginCommand",
+    "commandId" : "fetchShortCuts",
     "shortcut": { "mac": "Cmd+Shift+F", "win": "Ctrl+Shift+F" }
   } ],
   "version" : "1.0.0"

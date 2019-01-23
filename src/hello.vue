@@ -6,8 +6,14 @@
     <div class="form-parent">
       <h1>XD Shortcuts</h1>
       <form v-on:submit="submit">
-        <input id="query" uxp-quiet="true" @keydown="submit" v-model="message" placeholder="Search XD Shortcut">
-        <div style="width:100px;"><button v-on:click="submit" uxp-variant="cta">Search</button></div>
+        <input id="query" uxp-quiet="true" @keydown="submit" v-model="message" placeholder="Search XD Shortcuts">
+        <div class="button-flex">
+
+          
+          <div style="width:100px;" v-if="this.message.length >= 1 ? true : false"><button v-on:click="showAll" uxp-primary="cta">Show All</button></div>
+
+          <div style="width:100px;"><button v-on:click="submit" uxp-variant="cta">Search</button></div>
+        </div>
       </form>
     </div>
     <div class="copy-element">
@@ -22,7 +28,6 @@
 </template>
 
 <script>
-  
   const os = require('os');
   let localData = null;
   let Fuse = require('fuse.js');
@@ -57,11 +62,16 @@
       return {
         message: '',
         items: localData //  array of local data 
+       
       }
     },
     methods: {
       close() {
         this.dialog.close();
+      },
+      showAll: function() {
+        this.message = '';
+        this.items = localData;
       },
       submit : function(event) {
         event.preventDefault();

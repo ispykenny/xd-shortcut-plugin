@@ -24,7 +24,7 @@ function getDialog() {
 
 module.exports = {
   commands: {
-    myPluginCommand: function () {
+    fetchShortCuts: function () {
       getDialog().showModal();
     }
   }

@@ -32,3 +32,8 @@
 .form-parent h1 {
   padding-bottom: 10px;
 }
+
+.button-flex {
+  display: flex;
+  align-items: center;
+}
