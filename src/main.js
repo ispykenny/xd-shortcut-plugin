@@ -3,7 +3,7 @@ global.clearTimeout = function () { };
 
 const styles = require("./styles.css");
 const Vue = require("vue").default;
-const hello = require("./hello.vue").default
+const index = require("./index.vue").default
 const { Text, Color } = require("scenegraph");
 
 let dialog;
@@ -13,9 +13,9 @@ function getDialog() {
     dialog = document.querySelector("dialog");
     var app4 = new Vue({
       el: "#container",
-      components: { hello },
+      components: { index },
       render(h) {
-        return h(hello, { props: { dialog } })
+        return h(index, { props: { dialog } })
       }
     })
   }

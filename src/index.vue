@@ -8,10 +8,7 @@
       <form v-on:submit="submit">
         <input id="query" uxp-quiet="true" @keydown="submit" v-model="message" placeholder="Search XD Shortcuts">
         <div class="button-flex">
-
-          
           <div style="width:100px;" v-if="this.message.length >= 1 ? true : false"><button v-on:click="showAll" uxp-primary="cta">Show All</button></div>
-
           <div style="width:100px;"><button v-on:click="submit" uxp-variant="cta">Search</button></div>
         </div>
       </form>

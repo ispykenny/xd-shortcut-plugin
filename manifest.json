@@ -1,5 +1,5 @@
 {
-  "name" : "XD Keyboard Shortcuts",
+  "name" : "Keyboard Shortcuts",
   "host" : {
     "app" : "XD",
     "minVersion" : "13.0.0"
@@ -12,10 +12,10 @@
     "height" : 96
   } ],
   "uiEntryPoints" : [ {
-    "label" : "XD Keyboard Shortcuts",
+    "label" : "Keyboard Shortcuts",
     "type" : "menu",
     "commandId" : "fetchShortCuts",
     "shortcut": { "mac": "Cmd+Shift+F", "win": "Ctrl+Shift+F" }
   } ],
-  "version" : "1.0.0"
+  "version" : "1.0.1"
 }
