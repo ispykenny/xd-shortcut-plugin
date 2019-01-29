@@ -2306,7 +2306,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "form-parent" }, [
-      _c("h1", [_vm._v("XD Shortcuts")]),
+      _c("h1", [_vm._v("Keyboard Shortcuts")]),
       _vm._v(" "),
       _c("form", { on: { submit: _vm.submit } }, [
         _c("input", {

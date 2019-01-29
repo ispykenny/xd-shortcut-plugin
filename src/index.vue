@@ -4,7 +4,7 @@
       <img id="cancel" v-on:click="close" src="https://kennykrosky.com/wp-content/uploads/2019/01/close@2x-1.png" width="30px" height="30px"> 
     </div>
     <div class="form-parent">
-      <h1>XD Shortcuts</h1>
+      <h1>Keyboard Shortcuts</h1>
       <form v-on:submit="submit">
         <input id="query" uxp-quiet="true" @keydown="submit" v-model="message" placeholder="Search XD Shortcuts">
         <div class="button-flex">
