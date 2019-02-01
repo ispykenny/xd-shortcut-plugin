@@ -3105,6 +3105,11 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
+xd-storage-helper@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/xd-storage-helper/-/xd-storage-helper-1.2.0.tgz#93d86bc31d3481dd60e83620335cc6926ad447dd"
+  integrity sha512-Y8WkUrdUKQdbeVxnKxKsS0wH82NcXJiqqPwADS2jeWDCwPvl5L4gciw/VRupSzXEJFqojNFdD1y28Ip4WhfkUQ==
+
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
