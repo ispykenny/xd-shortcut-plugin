@@ -2216,62 +2216,63 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 //
 //
 
-const os = __webpack_require__(/*! os */ "os");
-let localData = null;
-let Fuse = __webpack_require__(/*! fuse.js */ "./node_modules/fuse.js/dist/fuse.js");
-let userOs = os.platform();
-let isMacUser = userOs === "darwin";
-let options = {
-  shouldSort: true,
-  threshold: 0.6,
-  location: 0,
-  distance: 10,
-  maxPatternLength: 32,
-  minMatchCharLength: 0,
-  keys: [ "name", "tags"]
-}
-let fuse = new Fuse(localData, options);
+// const fs = require("uxp").storage.localFileSystem;
+  const os = __webpack_require__(/*! os */ "os");
+  let localData = null;
+  let Fuse = __webpack_require__(/*! fuse.js */ "./node_modules/fuse.js/dist/fuse.js");
+  let userOs = os.platform();
+  let isMacUser = userOs === "darwin";
+  let options = {
+    shouldSort: true,
+    threshold: 0.6,
+    location: 0,
+    distance: 10,
+    maxPatternLength: 32,
+    minMatchCharLength: 0,
+    keys: [ "name", "tags"]
+  }
+  let fuse = new Fuse(localData, options);
 
-// check if they're win or mac user
-if(isMacUser) {
-  localData = __webpack_require__(/*! ./macData.js */ "./src/macData.js");
-} else {
-  localData = __webpack_require__(/*! ./winData.js */ "./src/winData.js");
-}
-//
+  // check if they're win or mac user
+  if(isMacUser) {
+    localData = __webpack_require__(/*! ./macData.js */ "./src/macData.js");
+  } else {
+    localData = __webpack_require__(/*! ./winData.js */ "./src/winData.js");
+  }
+  //
 
-module.exports = {
-  props: {
-    dialog: {
-        type: Object
-    }
-  },
-  data() {
-    return {
-      message: '',
-      items: localData //  array of local data 
-     
-    }
-  },
-  methods: {
-    close() {
-      this.dialog.close();
-    },
-    showAll: function() {
-      this.message = '';
-      this.items = localData;
-    },
-    submit : function(event) {
-      event.preventDefault();
-      fuse = new Fuse(localData, options);
-      if(this.message.length >= 1) {
-        this.items = fuse.search(this.message);
-      } else {
-        this.items = localData;
+  module.exports = {
+    props: {
+      dialog: {
+          type: Object
       }
-    }
-  } 
-}
+    },
+    data() {
+      return {
+        message: '',
+        items: localData //  array of local data 
+       
+      }
+    },
+    methods: {
+      close() {
+        this.dialog.close();
+      },
+      showAll: function() {
+        this.message = '';
+        this.items = localData;
+      },
+      submit : function(event) {
+        event.preventDefault();
+        fuse = new Fuse(localData, options);
+        if(this.message.length >= 1) {
+          this.items = fuse.search(this.message);
+        } else {
+          this.items = localData;
+        }
+      }
+    } 
+  }
 
 
 /***/ }),
@@ -11205,6 +11206,11 @@ module.exports = [
     "name": "Switch between Windows (Files)",
     "tags": "switch between windows files",
     "shortcut": "⌘-Tilde (~)"
+  },
+  {
+    "name": "Eyedropper",
+    "tags": "eye dropper, eye drop, color picker",
+    "shortcut": "I"
   }
 ]
 
@@ -11687,6 +11693,11 @@ module.exports =
       "name": "Switch between Windows (Files)",
       "tags": "switch between windows files",
       "shortcut": "Ctrl + Tab"
+    },
+    {
+      "name": "Eyedropper",
+      "tags": "Eyedropper, eye dropper, eye drop, color picker",
+      "shortcut": "I"
     }
   ]
 

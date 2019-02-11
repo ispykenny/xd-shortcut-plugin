@@ -25,6 +25,7 @@
 </template>
 
 <script>
+// const fs = require("uxp").storage.localFileSystem;
   const os = require('os');
   let localData = null;
   let Fuse = require('fuse.js');

@@ -395,5 +395,10 @@ module.exports =
       "name": "Switch between Windows (Files)",
       "tags": "switch between windows files",
       "shortcut": "Ctrl + Tab"
+    },
+    {
+      "name": "Eyedropper",
+      "tags": "Eyedropper, eye dropper, eye drop, color picker",
+      "shortcut": "I"
     }
   ]
