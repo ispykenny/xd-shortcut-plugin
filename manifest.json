@@ -2,8 +2,8 @@
   "name" : "Keyboard Shortcuts",
   "host": {
     "app": "XD",
-    "minVersion": "13.0",
-    "maxVersion": "14.0"
+    "minVersion": "14.0",
+    "maxVersion": "19.0"
   },
   "description" : "Quickly search any XD keyboard shortcut with this plugin. Use the shortcut Cmd+Shift+F for Mac and Ctrl+shift+F for Windows.",
   "summary": "find keyboard shortcuts",
@@ -32,5 +32,5 @@
     "commandId" : "fetchShortCuts",
     "shortcut": { "mac": "Cmd+Shift+F", "win": "Ctrl+Shift+F" }
   } ],
-  "version" : "2.0.0"
+  "version" : "2.0.1"
 }
