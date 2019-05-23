@@ -10950,6 +10950,11 @@ module.exports = [
   {
     "name": "Hide/Show layer",
     "tags": "hide, show, toggle hide",
+    "shortcut": "⌘,"
+  },
+  {
+    "name": "Hide/Show artboard guides",
+    "tags": "guides,hide, show, toggle hide, guides",
     "shortcut": "⌘;"
   },
   {
@@ -11211,6 +11216,11 @@ module.exports = [
     "name": "Eyedropper",
     "tags": "eye dropper, eye drop, color picker",
     "shortcut": "I"
+  },
+  {
+    "name": "Polygon",
+    "tags": "Polygon, triangle, Triangle",
+    "shortcut": "Y"
   }
 ]
 
@@ -11437,6 +11447,11 @@ module.exports =
     {
       "name": "Hide/Show layer",
       "tags": "hide, show, toggle hide",
+      "shortcut": "Ctrl + ,"
+    },
+    {
+      "name": "Hide/Show artboard guides",
+      "tags": "hide, show, toggle hide, guides",
       "shortcut": "Ctrl + ;"
     },
     {
@@ -11698,6 +11713,11 @@ module.exports =
       "name": "Eyedropper",
       "tags": "Eyedropper, eye dropper, eye drop, color picker",
       "shortcut": "I"
+    },
+    {
+      "name": "Polygon",
+      "tags": "Polygon, triangle",
+      "shortcut": "Y"
     }
   ]
 

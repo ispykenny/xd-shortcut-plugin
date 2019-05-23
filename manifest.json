@@ -1,21 +1,36 @@
 {
   "name" : "Keyboard Shortcuts",
-  "host" : {
-    "app" : "XD",
-    "minVersion" : "13.0.0"
+  "host": {
+    "app": "XD",
+    "minVersion": "13.0",
+    "maxVersion": "14.0"
   },
   "description" : "Quickly search any XD keyboard shortcut with this plugin. Use the shortcut Cmd+Shift+F for Mac and Ctrl+shift+F for Windows.",
+  "summary": "find keyboard shortcuts",
   "id" : "bc286477",
-  "icons" : [ {
-    "path" : "images/icon.png",
-    "width" : 96,
-    "height" : 96
-  } ],
+  "keywords": [
+      "keyboard shortcut",
+      "tool shortcut",
+      "keyboard shortcuts"
+  ],
+  "languages": [
+      "en"
+  ],
+  "website": "https://helpx.adobe.com/xd/help/keyboard-shortcuts.html",
+  "author": "Kenny Krosky & Raghu Thricovil",
+  "helpUrl": "https://twitter.com/ispykenny",
+  "icons": [
+      { "width": 24, "height": 24, "path": "images/icon@1x.png" },
+      { "width": 48, "height": 48, "path": "images/icon@2x.png" },
+      { "width": 96, "height": 96, "path": "images/icon@3x.png" },
+      { "width": 144, "height": 144, "path": "images/icon@4x.png" },
+      { "width": 192, "height": 192, "path": "images/icon@5x.png" }
+  ],
   "uiEntryPoints" : [ {
     "label" : "Keyboard Shortcuts",
     "type" : "menu",
     "commandId" : "fetchShortCuts",
     "shortcut": { "mac": "Cmd+Shift+F", "win": "Ctrl+Shift+F" }
   } ],
-  "version" : "1.0.5"
+  "version" : "2.0.0"
 }
