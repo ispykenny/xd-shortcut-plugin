@@ -1,7 +1,7 @@
 <template>
   <div class="shortcut">
     <div class="close-out">
-      <img id="cancel" v-on:click="close" src="https://kennykrosky.com/wp-content/uploads/2019/01/close@2x-1.png" width="30px" height="30px"> 
+      <img id="cancel" v-on:click="close" src="/images/close.png" width="30px" height="30px"> 
     </div>
     <div class="form-parent">
       <h1>Keyboard Shortcuts</h1>

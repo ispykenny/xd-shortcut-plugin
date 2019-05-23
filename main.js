@@ -2297,8 +2297,7 @@ var render = function() {
       _c("img", {
         attrs: {
           id: "cancel",
-          src:
-            "https://kennykrosky.com/wp-content/uploads/2019/01/close@2x-1.png",
+          src: "/images/close.png",
           width: "30px",
           height: "30px"
         },
