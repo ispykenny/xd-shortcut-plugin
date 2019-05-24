@@ -31,5 +31,5 @@
     "commandId" : "fetchShortCuts",
     "shortcut": { "mac": "Cmd+Shift+F", "win": "Ctrl+Shift+F" }
   } ],
-  "version" : "2.0.5"
+  "version" : "2.0.6"
 }

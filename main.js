@@ -2222,6 +2222,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
   let Fuse = __webpack_require__(/*! fuse.js */ "./node_modules/fuse.js/dist/fuse.js");
   let userOs = os.platform();
   let isMacUser = userOs === "darwin";
+  let fetchUserOs = null;
   let options = {
     shouldSort: true,
     threshold: 0.6,
@@ -2249,7 +2250,9 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     },
     data() {
       return {
+        userType: fetchUserOs,
         message: '',
+        title: 'Keyboard Shortcuts',
         items: localData //  array of local data 
        
       }
@@ -2306,7 +2309,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "form-parent" }, [
-      _c("h1", [_vm._v("Keyboard Shortcuts")]),
+      _c("h1", [_vm._v(_vm._s(this.title))]),
       _vm._v(" "),
       _c("form", { on: { submit: _vm.submit } }, [
         _c("input", {

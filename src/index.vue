@@ -4,7 +4,7 @@
       <img id="cancel" v-on:click="close" src="/images/close.png" width="30px" height="30px"> 
     </div>
     <div class="form-parent">
-      <h1>Keyboard Shortcuts</h1>
+      <h1>{{this.title}}</h1>
       <form v-on:submit="submit">
         <input id="query" uxp-quiet="true" @keydown="submit" v-model="message" placeholder="Search XD Shortcuts">
         <div class="button-flex">
@@ -31,6 +31,7 @@
   let Fuse = require('fuse.js');
   let userOs = os.platform();
   let isMacUser = userOs === "darwin";
+  let fetchUserOs = null;
   let options = {
     shouldSort: true,
     threshold: 0.6,
@@ -58,7 +59,9 @@
     },
     data() {
       return {
+        userType: fetchUserOs,
         message: '',
+        title: 'Keyboard Shortcuts',
         items: localData //  array of local data 
        
       }
