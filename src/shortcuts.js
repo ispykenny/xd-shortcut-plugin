@@ -2,411 +2,493 @@ module.exports = [
   {
     "name": "Undo",
     "tags": "undo, cancel, go back, goback",
-    "shortcut": "⌘Z"
+    "macshortcut": "⌘Z",
+    "pcshortcut": "Ctrl + Z"
   },
   {
     "name": "Redo",
     "tags": "redo, goforward, go forward",
-    "shortcut": "⇧⌘Z"
+    "macshortcut": "⇧⌘Z",
+    "pcshortcut": "Ctrl + Shift + Z"
   },
   {
     "name": "Duplicate",
     "tags": "clone, duplicate, copy element",
-    "shortcut": "⌘D"
+    "macshortcut": "⌘D",
+    "pcshortcut": "Ctrl + D"
   },
   {
     "name": "Delete",
     "tags": "delete, remove, trash",
-    "shortcut": "Delete key"
+    "macshortcut": "Delete key",
+    "pcshortcut": "Delete"
   },
   {
     "name": "Select All",
     "tags": "select, select item",
-    "shortcut": "⌘A"
+    "macshortcut": "⌘A",
+    "pcshortcut": "Ctrl + A"
   },
   {
     "name": "Deselect All",
     "tags": "square, rectangle",
-    "shortcut": "⇧⌘A"
+    "macshortcut": "⇧⌘A",
+    "pcshortcut": "Ctrl + Shift + A"
   },
   {
     "name": "New",
     "tags": "new, create",
-    "shortcut": "⌘N"
+    "macshortcut": "⌘N",
+    "pcshortcut": "Ctrl + N"
   },
   {
     "name": "Open...",
     "tags": "open",
-    "shortcut": "⌘ + Shift + O"
+    "macshortcut": "⌘ + Shift + O",
+    "pcshortcut": "Ctrl + Shift + O"
   },
   {
     "name": "Close",
     "tags": "close, hide, remove, shutdown",
-    "shortcut": "⌘W"
+    "macshortcut": "⌘W",
+    "pcshortcut": "Alt + F4"
   },
   {
     "name": "Save...",
     "tags": "save",
-    "shortcut": "⌘S"
+    "macshortcut": "⌘S",
+    "pcshortcut": "Ctrl + S"
   },
   {
     "name": "Save As...",
     "tags": "save as",
-    "shortcut": "⇧⌘S"
+    "macshortcut": "⇧⌘S",
+    "pcshortcut": "Ctrl + Shift + S"
   },
   {
     "name": "Export Batch",
     "tags": "export, batch",
-    "shortcut": "⇧⌘E"
+    "macshortcut": "⇧⌘E",
+    "pcshortcut": "Ctrl + Shift + E"
   },
   {
     "name": "Export Selected",
     "tags": "export, batch, selected",
-    "shortcut": "⌘E"
+    "macshortcut": "⌘E",
+    "pcshortcut": "Ctrl + E"
   },
   {
     "name": "Import",
     "tags": "import, batch",
-    "shortcut": "⇧⌘I"
+    "macshortcut": "⇧⌘I",
+    "pcshortcut": "Ctrl + Shift + I"
   },
   {
     "name": "Switch to Pen tool",
     "tags": "pen, pen-tool, pen tool",
-    "shortcut": "P"
+    "macshortcut": "P",
+    "pcshortcut": "P"
   },
   {
     "name": "Convert Point",
     "tags": "point, cursor",
-    "shortcut": "Double-click"
+    "macshortcut": "Double-click",
+    "pcshortcut": "Double-click"
   },
   {
     "name": "Asymmetric Control Point",
     "tags": "control point",
-    "shortcut": "⌥"
+    "macshortcut": "⌥",
+    "pcshortcut": "Alt"
   },
   {
     "name": "Snap Control Point Angle",
     "tags": "snap control point angle",
-    "shortcut": "⇧"
+    "macshortcut": "⇧",
+    "pcshortcut": "Shift"
   },
   {
     "name": "Add",
     "tags": "add",
-    "shortcut": "⌥⌘U"
+    "macshortcut": "⌥⌘U",
+    "pcshortcut": "Ctrl + Alt + U"
   },
   {
     "name": "Subtract",
     "tags": "subtract",
-    "shortcut": "⌥⌘S"
+    "macshortcut": "⌥⌘S",
+    "pcshortcut": "Ctrl + Alt + S"
   },
   {
     "name": "Intersect",
     "tags": "intersect",
-    "shortcut": "⌥⌘I"
+    "macshortcut": "⌥⌘I",
+    "pcshortcut": "Ctrl + Alt + I"
   },
   {
     "name": "Exclude Overlap",
     "tags": "exclude overlap",
-    "shortcut": "⌥⌘X"
+    "macshortcut": "⌥⌘X",
+    "pcshortcut": "Ctrl + Alt + X"
   },
   {
     "name": "Convert to Path",
     "tags": "convert path",
-    "shortcut": "⌘8"
+    "macshortcut": "⌘8",
+    "pcshortcut": "Ctrl + 8"
   },
   {
     "name": "Group layers",
     "tags": "group, collect, layers",
-    "shortcut": "⌘G"
+    "macshortcut": "⌘G",
+    "pcshortcut": "Ctrl + G"
   },
   {
     "name": "Ungroup layers",
     "tags": "ungroup, layers, seperate",
-    "shortcut": "⇧⌘G"
+    "macshortcut": "⇧⌘G",
+    "pcshortcut": "Ctrl + Shift +G"
   },
   {
     "name": "Make symbol",
     "tags": "symbol, create, symbol",
-    "shortcut": "⌘K"
+    "macshortcut": "⌘K",
+    "pcshortcut": "Ctrl + K"
   },
   {
     "name": "Lock/Unlock layer",
     "tags": "lock lock-layer, unlock, unlock-layer",
-    "shortcut": "⌘L"
+    "macshortcut": "⌘L",
+    "pcshortcut": "Ctrl + L"
   },
   {
     "name": "Hide/Show layer",
     "tags": "hide, show, toggle hide",
-    "shortcut": "⌘,"
+    "macshortcut": "⌘,",
+    "pcshortcut": "Ctrl + ,"
   },
   {
     "name": "Hide/Show artboard guides",
     "tags": "guides,hide, show, toggle hide, guides",
-    "shortcut": "⌘;"
+    "macshortcut": "⌘;",
+    "pcshortcut": "Ctrl + ;"
   },
   {
     "name": "Mask with shape",
     "tags": "mask, mask with shap, masking, clippathing",
-    "shortcut": "⇧⌘M"
+    "macshortcut": "⇧⌘M",
+    "pcshortcut": "Ctrl + Shift + M"
   },
   {
     "name": "Make repeat grid",
     "tags": "repeat, repeat-grid, repeat grid, reuse, repeating",
-    "shortcut": "⌘R"
+    "macshortcut": "⌘R",
+    "pcshortcut": "Ctrl + R"
   },
   {
-    "name": "Directly select a layer in a group/symbol	",
+    "name": "Directly select a layer in a group or symbol	",
     "tags": "select layer in group, select layer in a group",
-    "shortcut": "⌘Click layer in canvas	"
+    "macshortcut": "⌘Click layer in canvas	",
+    "pcshortcut": "Ctrl + click layer in canvas"
   },
   {
     "name": "Change layer opacity",
     "tags": "change opacity, transparency, transparent",
-    "shortcut": "1 to 9 (0 for 100%)"
+    "macshortcut": "1 to 9 (0 for 100%)",
+    "pcshortcut": "1 to 9 (0 for 100%)"
   },
   {
     "name": "Select artboard",
     "tags": "select artboard, select entire artboard",
-    "shortcut": "⌘Click on blank part of artboard"
+    "macshortcut": "⌘Click on blank part of artboard",
+    "pcshortcut": "Ctrl + click on blank part of artboard"
   },
   {
     "name": "Draw shape from center",
     "tags": "draw shap from center, draw shape",
-    "shortcut": "⌥Drag"
+    "macshortcut": "⌥Drag",
+    "pcshortcut": "Alt + drag"
   },
   {
     "name": "Draw shape with 1:1 aspect ratio (perfects square/circle)",
     "tags": "draw shap from center, draw shape",
-    "shortcut": "⇧Drag"
+    "macshortcut": "⇧Drag",
+    "pcshortcut": "Shift + drag"
   },
   {
     "name": "Align Left",
     "tags": "align, align left, align-left",
-    "shortcut": "⌃⌘←"
+    "macshortcut": "⌃⌘←",
+    "pcshortcut": "Ctrl + Shift + ←"
   },
   {
     "name": "Align Center (horizontally)",
     "tags": "align, align center, align-center, align-horizontally, align horizontally",
-    "shortcut": "⌃⌘C"
+    "macshortcut": "⌃⌘C",
+    "pcshortcut": "Shift + C"
   },
   {
     "name": "Align Right",
     "tags": "align, align right, align-right",
-    "shortcut": "⌃⌘→"
+    "macshortcut": "⌃⌘→",
+    "pcshortcut": "Ctrl + Shift + →"
   },
   {
     "name": "Align Top",
     "tags": "align, align top, align-top",
-    "shortcut": "⌃⌘↑"
+    "macshortcut": "⌃⌘↑",
+    "pcshortcut": "Ctrl +Shift + ↑"
   },
   {
     "name": "Align Middle (vertically)",
     "tags": "align, align middle, align-middle, align-vertically, align vertically",
-    "shortcut": "⌃⌘M"
+    "macshortcut": "⌃⌘M",
+    "pcshortcut": "Shift + M"
   },
   {
     "name": "Align Bottom",
     "tags": "align, align bottom, align-bottom",
-    "shortcut": "⌃⌘↓"
+    "macshortcut": "⌃⌘↓",
+    "pcshortcut": "Ctrl + Shift + ↓"
   },
   {
     "name": "Bring to Front",
     "tags": "front, bring to front, arrange",
-    "shortcut": "⇧⌘]"
+    "macshortcut": "⇧⌘]",
+    "pcshortcut": "Shift + Ctrl + ]"
   },
   {
     "name": "Bring Forward",
     "tags": "forward, bring forward, arrange",
-    "shortcut": "⌘]"
+    "macshortcut": "⌘]",
+    "pcshortcut": "Ctrl + ]"
   },
   {
     "name": "Send to Back",
     "tags": "backward, bring forward, arrange",
-    "shortcut": "⌘["
+    "macshortcut": "⌘[",
+    "pcshortcut": "Ctrl + ["
   },
   {
     "name": "Send Backward",
     "tags": "backward, bring forward, arrange",
-    "shortcut": "⇧⌘["
+    "macshortcut": "⇧⌘[",
+    "pcshortcut": "Shift + Ctrl + ["
   },
   {
     "name": "Bold",
     "tags": "bold, bold font, font",
-    "shortcut": "⌘B"
+    "macshortcut": "⌘B",
+    "pcshortcut": "Ctrl + B"
   },
   {
     "name": "Italic",
     "tags": "italic, italic font, font",
-    "shortcut": "⌘I"
+    "macshortcut": "⌘I",
+    "pcshortcut": "Ctrl + I"
   },
   {
     "name": "Increase font size",
     "tags": "font size, increase font, font",
-    "shortcut": "⇧⌘>"
+    "macshortcut": "⇧⌘>",
+    "pcshortcut": "Ctrl + Shift + >"
   },
   {
     "name": "Decrease font size",
     "tags": "font size, decrease font, font",
-    "shortcut": "⇧⌘<"
+    "macshortcut": "⇧⌘<",
+    "pcshortcut": "Ctrl + Shift + <"
   },
   {
     "name": "From Center",
     "tags": "center, from center",
-    "shortcut": "⌥"
+    "macshortcut": "⌥",
+    "pcshortcut": "Alt"
   },
   {
     "name": "Copy Paste Object",
     "tags": "copy, paste, object, copy-paste-object",
-    "shortcut": "⌥ Drag"
+    "macshortcut": "⌥ Drag",
+    "pcshortcut": "Alt + Drag"
   },
   {
     "name": "Constrain",
     "tags": "contrain",
-    "shortcut": "⇧"
+    "macshortcut": "⇧",
+    "pcshortcut": "Shift"
   },
   {
     "name": "Edit Text",
     "tags": "edit text",
-    "shortcut": "Enter"
+    "macshortcut": "Enter",
+    "pcshortcut": "Enter"
   },
   {
     "name": "Constrain Rotate",
     "tags": "constrain rotate",
-    "shortcut": "⇧ (15°)"
+    "macshortcut": "⇧ (15°)",
+    "pcshortcut": "Shift (15°)"
   },
   {
     "name": "Line Constrain Rotate",
     "tags": "line constrain rotate",
-    "shortcut": "⇧ (45°)"
+    "macshortcut": "⇧ (45°)",
+    "pcshortcut": "Shift (15°)"
   },
   {
     "name": "Constrain From Center",
     "tags": "constrain from middle, constrain from center",
-    "shortcut": "⇧⌥"
+    "macshortcut": "⇧⌥",
+    "pcshortcut": "Shift + Alt"
   },
   {
     "name": "Direct Select",
     "tags": "select, direct select",
-    "shortcut": "⌘"
+    "macshortcut": "⌘",
+    "pcshortcut": "Ctrl"
   },
   {
     "name": "Switch between Design and Prototype mode",
     "tags": "switch between design and prototype, toggle design and prototype",
-    "shortcut": "Ctrl + Tab"
+    "macshortcut": "Ctrl + Tab",
+    "pcshortcut": "Ctrl + Tab"
   },
   {
     "name": "Select",
     "tags": "select, select layer",
-    "shortcut": "V"
+    "macshortcut": "V",
+    "pcshortcut": "V"
   },
   {
     "name": "Rectangle",
     "tags": "rectangle, square, shapes, rectangles",
-    "shortcut": "R"
+    "macshortcut": "R",
+    "pcshortcut": "R"
   },
   {
     "name": "Ellipse",
     "tags": "ellipse, circle , shapes",
-    "shortcut": "E"
+    "macshortcut": "E",
+    "pcshortcut": "E"
   },
   {
     "name": "Line",
     "tags": "line, shapes, lines",
-    "shortcut": "L"
+    "macshortcut": "L",
+    "pcshortcut": "L"
   },
   {
     "name": "Pen",
     "tags": "pen,pen-tool, pen-tool, shapes,  pen tools, pen-tools",
-    "shortcut": "P"
+    "macshortcut": "P",
+    "pcshortcut": "P"
   },
   {
     "name": "Text",
     "tags": "text, font",
-    "shortcut": "T"
+    "macshortcut": "T",
+    "pcshortcut": "T"
   },
   {
     "name": "Artboard",
     "tags": "artboard, new artboard, artboards, artboard",
-    "shortcut": "A"
+    "macshortcut": "A",
+    "pcshortcut": "A"
   },
   {
     "name": "Zoom",
     "tags": "zoom",
-    "shortcut": "Enter zoom mode: Z"
+    "macshortcut": "Enter zoom mode: Z",
+    "pcshortcut": "Enter zoom mode: Z"
   },
   {
     "name": "Zoom to Selection",
     "tags": "zoom to selection",
-    "shortcut": "⌘3"
+    "macshortcut": "⌘3",
+    "pcshortcut": "Ctrl + 3"
   },
   {
     "name": "Zoom In",
     "tags": "zoom in, zoom",
-    "shortcut": "⌘+,"
+    "macshortcut": "⌘+,",
+    "pcshortcut": "Ctrl + +,"
   },
   {
     "name": "Zoom Out",
     "tags": "zoom out, zoom",
-    "shortcut": "⌘-,"
+    "macshortcut": "⌘-,",
+    "pcshortcut": "Ctrl + -,"
   },
   {
     "name": "Zoom to Fit",
     "tags": "zoom to fit, zoom",
-    "shortcut": "⌘0"
+    "macshortcut": "⌘0",
+    "pcshortcut": "Ctrl + 0"
   },
   {
     "name": "Zoom 100%",
     "tags": "zoom",
-    "shortcut": "⌘1"
+    "macshortcut": "⌘1",
+    "pcshortcut": "Ctrl + 1"
   },
   {
     "name": "Zoom 200%",
     "tags": "zoom",
-    "shortcut": "⌘2"
+    "macshortcut": "⌘2",
+    "pcshortcut": "Ctrl + 2"
   },
   {
     "name": "Pan",
     "tags": "pan, zoom",
-    "shortcut": "Spacebar"
+    "macshortcut": "Spacebar",
+    "pcshortcut": "Spacebar"
   },
   {
     "name": "Assets",
     "tags": "assets",
-    "shortcut": "⇧ ⌘ Y"
+    "macshortcut": "⇧ ⌘ Y",
+    "pcshortcut": "Ctrl + Shift + Y"
   },
   {
     "name": "Layers",
     "tags": "layers, layer, layer panel, layers panel",
-    "shortcut": "⌘ Y"
+    "macshortcut": "⌘ Y",
+    "pcshortcut": "Ctrl + Y"
   },
   {
     "name": "Show Layout Grid",
     "tags": "layout, grid, show grid, show layout layouts, show layouts",
-    "shortcut": "⇧ ⌘ '"
+    "macshortcut": "⇧ ⌘ '",
+    "pcshortcut": "Shift + Ctrl + '"
   },
   {
     "name": "Show Square Grid",
     "tags": "layout, grid, show grid, show layout, square, square grid, layouts, grids",
-    "shortcut": "⌘ '"
+    "macshortcut": "⌘ '",
+    "pcshortcut": "Ctrl + '"
   },
   {
     "name": "Fullscreen Mode",
     "tags": "full screen, fullscreen",
-    "shortcut": "^⌘F"
+    "macshortcut": "^⌘F",
+    "pcshortcut": "Not available"
   },
   {
     "name": "Switch between Windows (Files)",
     "tags": "switch between windows files",
-    "shortcut": "⌘-Tilde (~)"
+    "macshortcut": "⌘-Tilde (~)",
+    "pcshortcut": "Ctrl + Tab"
   },
   {
     "name": "Eyedropper",
     "tags": "eye dropper, eye drop, color picker",
-    "shortcut": "I"
+    "macshortcut": "I",
+    "pcshortcut": "I"
   },
   {
     "name": "Polygon",
     "tags": "Polygon, triangle, Triangle",
-    "shortcut": "Y"
+    "macshortcut": "Y",
+    "pcshortcut": "Y"
   }
 ]
