@@ -2230,9 +2230,13 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 //
 //
 //
+//
+//
+//
 
 let connection = null;
 let shortcuts = null;
+
 
 // Check Operating System
 const os = __webpack_require__(/*! os */ "os");
@@ -2263,7 +2267,6 @@ request.onload = function() {
     let resp = request.responseText;
     let returnJson = JSON.parse(resp);
     let baseEndPoint = returnJson.shortcuts;
-    console.log(returnJson)
     shortcuts = baseEndPoint;
     connection = true;
   } else {
@@ -2291,6 +2294,7 @@ module.exports = {
       connectionType: connection,
       userType: isMacUser,
       message: '',
+      offlineMsg: ' Offline (Last updated: 5/24/19)',
       title: 'Keyboard Shortcuts',
       items: shortcuts //  array of local data 
     }
@@ -2355,6 +2359,20 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "form-parent" }, [
+      !this.connectionType
+        ? _c(
+            "p",
+            {
+              staticStyle: {
+                color: "#999",
+                "font-size": "14px",
+                "font-style": "italic"
+              }
+            },
+            [_vm._v("\n     " + _vm._s(this.offlineMsg) + "\n    ")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
       _c("h1", [_vm._v(_vm._s(this.title))]),
       _vm._v(" "),
       _c("form", { on: { submit: _vm.submit } }, [
@@ -2383,12 +2401,6 @@ var render = function() {
             }
           }
         }),
-        _vm._v(" "),
-        !this.connectionType
-          ? _c("p", { staticStyle: { color: "#999" } }, [
-              _vm._v("\n        Offline (Last updated: 5/24/19)\n      ")
-            ])
-          : _vm._e(),
         _vm._v(" "),
         _c("div", { staticClass: "button-flex" }, [
           (this.message.length >= 1
@@ -10713,102 +10725,6 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./node_modules/xd-storage-helper/storage-helper.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/xd-storage-helper/storage-helper.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
- * Copyright (c) 2019. by Pablo Klaschka
- */
-
-const storage = __webpack_require__(/*! uxp */ "uxp").storage;
-const fs = storage.localFileSystem;
-
-let data;
-
-class storageHelper {
-    /**
-     * Creates a data file if none was previously existent.
-     * @return {Promise<storage.File>} The data file
-     * @private
-     */
-    static async init() {
-        let dataFolder = await fs.getDataFolder();
-        try {
-            let returnFile = await dataFolder.getEntry('storage.json');
-            data = JSON.parse((await returnFile.read({format: storage.formats.utf8})).toString());
-            return returnFile;
-        } catch (e) {
-            const file = await dataFolder.createEntry('storage.json', {type: storage.types.file, overwrite: true});
-            if (file.isFile) {
-                await file.write('{}', {append: false});
-                data = {};
-                return file;
-            } else {
-                throw new Error('Storage file storage.json was not a file.');
-            }
-        }
-    }
-
-    /**
-     * Retrieves a value from storage. Saves default value if none is set.
-     * @param {string} key The identifier
-     * @param {*} defaultValue The default value. Gets saved and returned if no value was previously set for the speciefied key.
-     * @return {Promise<*>} The value retrieved from storage. If none is saved, the `defaultValue` is returned.
-     */
-    static async get(key, defaultValue) {
-        if (!data) {
-            const dataFile = await this.init();
-            data = JSON.parse((await dataFile.read({format: storage.formats.utf8})).toString());
-        }
-        if (data[key] === undefined) {
-            await this.set(key, defaultValue);
-            return defaultValue;
-        } else {
-            return data[key];
-        }
-    }
-
-    /**
-     * Saves a certain key-value-pair to the storage.
-     * @param {string} key The identifier
-     * @param {*} value The value that get's saved
-     * @return {Promise<void>}
-     */
-    static async set(key, value) {
-        const dataFile = await this.init();
-        data[key] = value;
-        return await dataFile.write(JSON.stringify(data), {append: false, format: storage.formats.utf8})
-    }
-
-    /**
-     * Deletes a certain key-value-pair from the storage
-     * @param {string} key The key of the deleted pair
-     * @return {Promise<void>}
-     */
-    static async delete(key) {
-        return await this.set(key, undefined);
-    }
-
-    /**
-     * Resets (i.e. purges) all stored settings.
-     * @returns {Promise<void>}
-     */
-    static async reset() {
-        const dataFile = await this.init();
-        return await dataFile.write('{}', {append: false, format: storage.formats.utf8})
-
-    }
-}
-
-module.exports = storageHelper;
-
-
-/***/ }),
-
 /***/ "./src/index.vue":
 /*!***********************!*\
   !*** ./src/index.vue ***!
@@ -10894,9 +10810,9 @@ global.clearTimeout = function () { };
 const styles = __webpack_require__(/*! ./styles.css */ "./src/styles.css");
 const Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js").default;
 const index = __webpack_require__(/*! ./index.vue */ "./src/index.vue").default
-const { Text, Color } = __webpack_require__(/*! scenegraph */ "scenegraph");
-const storageHelper = __webpack_require__(/*! xd-storage-helper */ "./node_modules/xd-storage-helper/storage-helper.js")
 let dialog;
+
+
 function getDialog() {
   if (dialog == null) {
     document.body.innerHTML = `<dialog><div id="container"></div></dialog>`
@@ -11466,28 +11382,6 @@ if(false) {}
 /***/ (function(module, exports) {
 
 module.exports = require("os");
-
-/***/ }),
-
-/***/ "scenegraph":
-/*!*****************************!*\
-  !*** external "scenegraph" ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("scenegraph");
-
-/***/ }),
-
-/***/ "uxp":
-/*!**********************!*\
-  !*** external "uxp" ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("uxp");
 
 /***/ })
 

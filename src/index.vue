@@ -4,12 +4,15 @@
       <img id="cancel" v-on:click="close" src="/images/close.png" width="30px" height="30px"> 
     </div>
     <div class="form-parent">
+      <p 
+        v-if="!this.connectionType" 
+        style="color: #999; font-size: 14px; font-style: italic;"
+      >
+       {{this.offlineMsg}}
+      </p>
       <h1>{{this.title}}</h1>
       <form v-on:submit="submit">
         <input id="query" uxp-quiet="true" @keydown="submit" v-model="message" placeholder="Search XD Shortcuts">
-        <p v-if="!this.connectionType" style="color: #999;">
-          Offline (Last updated: 5/24/19)
-        </p>
         <div class="button-flex">
           <div style="width:100px;" v-if="this.message.length >= 1 ? true : false"><button v-on:click="showAll" uxp-primary="cta">Show All</button></div>
           <div style="width:100px;"><button v-on:click="submit" uxp-variant="cta">Search</button></div>
@@ -43,6 +46,7 @@
   let connection = null;
   let shortcuts = null;
 
+
   // Check Operating System
   const os = require('os');
   let userOs = os.platform();
@@ -72,7 +76,6 @@
       let resp = request.responseText;
       let returnJson = JSON.parse(resp);
       let baseEndPoint = returnJson.shortcuts;
-      console.log(returnJson)
       shortcuts = baseEndPoint;
       connection = true;
     } else {
@@ -100,6 +103,7 @@
         connectionType: connection,
         userType: isMacUser,
         message: '',
+        offlineMsg: ' Offline (Last updated: 5/24/19)',
         title: 'Keyboard Shortcuts',
         items: shortcuts //  array of local data 
       }

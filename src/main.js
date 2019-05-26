@@ -4,9 +4,9 @@ global.clearTimeout = function () { };
 const styles = require("./styles.css");
 const Vue = require("vue").default;
 const index = require("./index.vue").default
-const { Text, Color } = require("scenegraph");
-const storageHelper = require('xd-storage-helper')
 let dialog;
+
+
 function getDialog() {
   if (dialog == null) {
     document.body.innerHTML = `<dialog><div id="container"></div></dialog>`
