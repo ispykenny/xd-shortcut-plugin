@@ -34,39 +34,31 @@
 </template>
 
 <script>
-  let connection = null;
-  let shortcuts = require('./shortcuts.js');
 
+  // To Dos 
+  // Set up external endpoint to hit to render shortcuts
+  // Endpoint url
+  let url = "https://raw.githubusercontent.com/atokad5/keyboard-shortcut-list/master/endpoint.json";
+
+
+  // Fetch local shortcuts
+  let shortcuts = require('./shortcuts.js');
 
   // Check Operating System
   const os = require('os');
   let userOs = os.platform();
   let isMacUser = userOs === "darwin";  // true || false (depends on user)
-  
-  // Search Filter 
+
+  // Search Filter lib
   let Fuse = require('fuse.js');
 
 
-  // Endpoint Settings 
-  let url = "https://raw.githubusercontent.com/atokad5/keyboard-shortcut-list/master/endpoint.json";
-  
-
   module.exports = {
-    props: {
-      dialog: {
-          type: Object
-      }
-    },
-    mounted() {
-      console.log("mounted")
-      console.log(userOs, 'here')
-    },
     data() {
       return {
         connectionType: true,
         userType: isMacUser,
         message: '',
-        offlineMsg: ' Offline (Last updated: 5/24/19)',
         title: 'Keyboard Shortcuts',
         items: shortcuts //  array of local data 
       }

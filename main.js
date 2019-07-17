@@ -2225,39 +2225,31 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 //
 //
 
-let connection = null;
-let shortcuts = __webpack_require__(/*! ./shortcuts.js */ "./src/shortcuts.js");
 
+// To Dos 
+// Set up external endpoint to hit to render shortcuts
+// Endpoint url
+let url = "https://raw.githubusercontent.com/atokad5/keyboard-shortcut-list/master/endpoint.json";
+
+
+// Fetch local shortcuts
+let shortcuts = __webpack_require__(/*! ./shortcuts.js */ "./src/shortcuts.js");
 
 // Check Operating System
 const os = __webpack_require__(/*! os */ "os");
 let userOs = os.platform();
 let isMacUser = userOs === "darwin";  // true || false (depends on user)
 
-// Search Filter 
+// Search Filter lib
 let Fuse = __webpack_require__(/*! fuse.js */ "./node_modules/fuse.js/dist/fuse.js");
 
 
-// Endpoint Settings 
-let url = "https://raw.githubusercontent.com/atokad5/keyboard-shortcut-list/master/endpoint.json";
-
-
 module.exports = {
-  props: {
-    dialog: {
-        type: Object
-    }
-  },
-  mounted() {
-    console.log("mounted")
-    console.log(userOs, 'here')
-  },
   data() {
     return {
       connectionType: true,
       userType: isMacUser,
       message: '',
-      offlineMsg: ' Offline (Last updated: 5/24/19)',
       title: 'Keyboard Shortcuts',
       items: shortcuts //  array of local data 
     }
@@ -10745,16 +10737,15 @@ global.clearTimeout = function () { };
 const styles = __webpack_require__(/*! ./styles.css */ "./src/styles.css");
 const Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js").default;
 const index = __webpack_require__(/*! ./index.vue */ "./src/index.vue").default
-let dialog;
 
 
 function show(e) {
-  document.body.innerHTML = `<div id="container">uijdwaij</div>`
+  document.body.innerHTML = `<div id="container"></div>`
   var app4 = new Vue({
     el: "#container",
     components: { index },
     render(h) {
-      return h(index, { props: { dialog } })
+      return h(index)
     }
   })
 }
