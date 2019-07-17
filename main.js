@@ -96,7 +96,7 @@ module.exports =
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".shortcut {\n    width: 550px;\n}\n\n.copy-element {\n  max-height: 450px;\n  overflow-y: scroll;\n}\n.copy-element__item {\n  padding: 16px 0px;\n  border-bottom: 1px solid #ddd;\n}\n\n.shortcut-name {\n  font-size: 22px;\n}\n\n.shortcut-command {\n  font-size: 17px;\n  padding-top: 6px;\n}\n.close-out {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end;\n  padding-bottom: 10px;\n}\n#cancel:hover {\n  opacity: 0.6;\n}\n\n.form-parent h1 {\n  padding-bottom: 10px;\n}\n\n.button-flex {\n  display: flex;\n  align-items: center;\n}", ""]);
+exports.push([module.i, ".shortcut {\n    width: 100%;\n}\n\n.copy-element {\n  margin-bottom: 10px;\n}\n.copy-element__item {\n  padding: 8px 0px;\n  border-bottom: 1px solid #ddd;\n}\n\n.shortcut-name {\n  font-size: 16px;\n  font-weight: 100;\n}\n\n.shortcut-command {\n  font-size: 17px;\n  /* padding-top: 6px; */\n  color: black;\n  padding: 10px 0 0 0;\n  margin: 0;\n}\n.close-out {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end;\n  padding-bottom: 10px;\n}\n#cancel:hover {\n  opacity: 0.6;\n}\n\n.form-parent h1 {\n  padding-bottom: 10px;\n}\n\n.button-flex {\n  display: flex;\n  align-items: center;\n}", ""]);
 
 
 
@@ -2230,12 +2230,9 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 //
 //
 //
-//
-//
-//
 
 let connection = null;
-let shortcuts = null;
+let shortcuts = __webpack_require__(/*! ./shortcuts.js */ "./src/shortcuts.js");
 
 
 // Check Operating System
@@ -2245,43 +2242,11 @@ let isMacUser = userOs === "darwin";  // true || false (depends on user)
 
 // Search Filter 
 let Fuse = __webpack_require__(/*! fuse.js */ "./node_modules/fuse.js/dist/fuse.js");
-let fuse = new Fuse(shortcuts, {
-  shouldSort: true,
-  threshold: 0.6,
-  location: 0,
-  distance: 10,
-  maxPatternLength: 32,
-  minMatchCharLength: 0,
-  keys: [ "name", "tags"]
-});
+
 
 // Endpoint Settings 
 let url = "https://raw.githubusercontent.com/atokad5/keyboard-shortcut-list/master/endpoint.json";
 
-var request = new XMLHttpRequest();
-request.open('GET', url, true);
-
-request.onload = function() {
-  if (request.status >= 200 && request.status < 400) {
-    // do success stuff here 
-    let resp = request.responseText;
-    let returnJson = JSON.parse(resp);
-    let baseEndPoint = returnJson.shortcuts;
-    shortcuts = baseEndPoint;
-    connection = true;
-  } else {
-    // Response was error
-  }
-};
-
-request.onerror = function() {
-  // no connection or connection error
-  // fetch local shortcut list
-  connection = false;
-  shortcuts = __webpack_require__(/*! ./shortcuts.js */ "./src/shortcuts.js");
-};
-
-request.send();
 
 module.exports = {
   props: {
@@ -2289,9 +2254,12 @@ module.exports = {
         type: Object
     }
   },
+  mounted() {
+    console.log("mounted")
+  },
   data() {
     return {
-      connectionType: connection,
+      connectionType: true,
       userType: isMacUser,
       message: '',
       offlineMsg: ' Offline (Last updated: 5/24/19)',
@@ -2308,8 +2276,7 @@ module.exports = {
       this.items = shortcuts;
     },
     submit : function(event) {
-      event.preventDefault();
-      fuse = new Fuse(shortcuts, {
+      let fuse = new Fuse(shortcuts, {
         shouldSort: true,
         threshold: 0.6,
         location: 0,
@@ -2346,18 +2313,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "shortcut" }, [
-    _c("div", { staticClass: "close-out" }, [
-      _c("img", {
-        attrs: {
-          id: "cancel",
-          src: "/images/close.png",
-          width: "30px",
-          height: "30px"
-        },
-        on: { click: _vm.close }
-      })
-    ]),
-    _vm._v(" "),
     _c("div", { staticClass: "form-parent" }, [
       !this.connectionType
         ? _c(
@@ -2392,7 +2347,6 @@ var render = function() {
           },
           domProps: { value: _vm.message },
           on: {
-            keydown: _vm.submit,
             input: function($event) {
               if ($event.target.composing) {
                 return
@@ -10813,26 +10767,29 @@ const index = __webpack_require__(/*! ./index.vue */ "./src/index.vue").default
 let dialog;
 
 
-function getDialog() {
-  if (dialog == null) {
-    document.body.innerHTML = `<dialog><div id="container"></div></dialog>`
-    dialog = document.querySelector("dialog");
-    var app4 = new Vue({
-      el: "#container",
-      components: { index },
-      render(h) {
-        return h(index, { props: { dialog } })
-      }
-    })
-  }
-  return dialog
+function show(e) {
+  document.body.innerHTML = `<div id="container">uijdwaij</div>`
+  var app4 = new Vue({
+    el: "#container",
+    components: { index },
+    render(h) {
+      return h(index, { props: { dialog } })
+    }
+  })
 }
 
+function hide () {
+  console.log('hiding')
+}
+
+function update(e) {
+  console.log('updating')
+}
+
+
 module.exports = {
-  commands: {
-    fetchShortCuts: function () {
-      getDialog().showModal();
-    }
+  panels: {
+    "fetchShortCuts": {show, hide, update}
   }
 };
 

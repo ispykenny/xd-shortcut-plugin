@@ -7,25 +7,28 @@ const index = require("./index.vue").default
 let dialog;
 
 
-function getDialog() {
-  if (dialog == null) {
-    document.body.innerHTML = `<dialog><div id="container"></div></dialog>`
-    dialog = document.querySelector("dialog");
-    var app4 = new Vue({
-      el: "#container",
-      components: { index },
-      render(h) {
-        return h(index, { props: { dialog } })
-      }
-    })
-  }
-  return dialog
+function show(e) {
+  document.body.innerHTML = `<div id="container">uijdwaij</div>`
+  var app4 = new Vue({
+    el: "#container",
+    components: { index },
+    render(h) {
+      return h(index, { props: { dialog } })
+    }
+  })
 }
 
+function hide () {
+  console.log('hiding')
+}
+
+function update(e) {
+  console.log('updating')
+}
+
+
 module.exports = {
-  commands: {
-    fetchShortCuts: function () {
-      getDialog().showModal();
-    }
+  panels: {
+    "fetchShortCuts": {show, hide, update}
   }
 };

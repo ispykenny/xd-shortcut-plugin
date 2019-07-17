@@ -1,8 +1,5 @@
 <template>
   <div class="shortcut">
-    <div class="close-out">
-      <img id="cancel" v-on:click="close" src="/images/close.png" width="30px" height="30px"> 
-    </div>
     <div class="form-parent">
       <p 
         v-if="!this.connectionType" 
@@ -12,7 +9,7 @@
       </p>
       <h1>{{this.title}}</h1>
       <form v-on:submit="submit">
-        <input id="query" uxp-quiet="true" @keydown="submit" v-model="message" placeholder="Search XD Shortcuts">
+        <input id="query" uxp-quiet="true" v-model="message" placeholder="Search XD Shortcuts">
         <div class="button-flex">
           <div style="width:100px;" v-if="this.message.length >= 1 ? true : false"><button v-on:click="showAll" uxp-primary="cta">Show All</button></div>
           <div style="width:100px;"><button v-on:click="submit" uxp-variant="cta">Search</button></div>
@@ -44,7 +41,7 @@
 
 <script>
   let connection = null;
-  let shortcuts = null;
+  let shortcuts = require('./shortcuts.js');
 
 
   // Check Operating System
@@ -54,43 +51,11 @@
 
   // Search Filter 
   let Fuse = require('fuse.js');
-  let fuse = new Fuse(shortcuts, {
-    shouldSort: true,
-    threshold: 0.6,
-    location: 0,
-    distance: 10,
-    maxPatternLength: 32,
-    minMatchCharLength: 0,
-    keys: [ "name", "tags"]
-  });
+
 
   // Endpoint Settings 
   let url = "https://raw.githubusercontent.com/atokad5/keyboard-shortcut-list/master/endpoint.json";
-
-  var request = new XMLHttpRequest();
-  request.open('GET', url, true);
-
-  request.onload = function() {
-    if (request.status >= 200 && request.status < 400) {
-      // do success stuff here 
-      let resp = request.responseText;
-      let returnJson = JSON.parse(resp);
-      let baseEndPoint = returnJson.shortcuts;
-      shortcuts = baseEndPoint;
-      connection = true;
-    } else {
-      // Response was error
-    }
-  };
-
-  request.onerror = function() {
-    // no connection or connection error
-    // fetch local shortcut list
-    connection = false;
-    shortcuts = require('./shortcuts.js');
-  };
-
-  request.send();
+  
 
   module.exports = {
     props: {
@@ -98,9 +63,12 @@
           type: Object
       }
     },
+    mounted() {
+      console.log("mounted")
+    },
     data() {
       return {
-        connectionType: connection,
+        connectionType: true,
         userType: isMacUser,
         message: '',
         offlineMsg: ' Offline (Last updated: 5/24/19)',
@@ -117,8 +85,7 @@
         this.items = shortcuts;
       },
       submit : function(event) {
-        event.preventDefault();
-        fuse = new Fuse(shortcuts, {
+        let fuse = new Fuse(shortcuts, {
           shouldSort: true,
           threshold: 0.6,
           location: 0,

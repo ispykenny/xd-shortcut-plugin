@@ -25,11 +25,12 @@
       { "width": 144, "height": 144, "path": "images/icon@4x.png" },
       { "width": 192, "height": 192, "path": "images/icon@5x.png" }
   ],
-  "uiEntryPoints" : [ {
-    "label" : "Keyboard Shortcuts",
-    "type" : "menu",
-    "commandId" : "fetchShortCuts",
-    "shortcut": { "mac": "Cmd+Shift+F", "win": "Ctrl+Shift+F" }
-  } ],
+  "uiEntryPoints": [
+    {
+      "type": "panel",
+      "label": "Plugin UI Builder",
+      "panelId": "fetchShortCuts"
+    }
+  ],
   "version" : "2.0.6"
 }
