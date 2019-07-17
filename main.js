@@ -2224,12 +2224,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 let connection = null;
 let shortcuts = __webpack_require__(/*! ./shortcuts.js */ "./src/shortcuts.js");
@@ -2256,6 +2250,7 @@ module.exports = {
   },
   mounted() {
     console.log("mounted")
+    console.log(userOs, 'here')
   },
   data() {
     return {
@@ -2314,20 +2309,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "shortcut" }, [
     _c("div", { staticClass: "form-parent" }, [
-      !this.connectionType
-        ? _c(
-            "p",
-            {
-              staticStyle: {
-                color: "#999",
-                "font-size": "14px",
-                "font-style": "italic"
-              }
-            },
-            [_vm._v("\n     " + _vm._s(this.offlineMsg) + "\n    ")]
-          )
-        : _vm._e(),
-      _vm._v(" "),
       _c("h1", [_vm._v(_vm._s(this.title))]),
       _vm._v(" "),
       _c("form", { on: { submit: _vm.submit } }, [

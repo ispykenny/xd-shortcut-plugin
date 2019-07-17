@@ -1,12 +1,6 @@
 <template>
   <div class="shortcut">
     <div class="form-parent">
-      <p 
-        v-if="!this.connectionType" 
-        style="color: #999; font-size: 14px; font-style: italic;"
-      >
-       {{this.offlineMsg}}
-      </p>
       <h1>{{this.title}}</h1>
       <form v-on:submit="submit">
         <input id="query" uxp-quiet="true" v-model="message" placeholder="Search XD Shortcuts">
@@ -48,7 +42,7 @@
   const os = require('os');
   let userOs = os.platform();
   let isMacUser = userOs === "darwin";  // true || false (depends on user)
-
+  
   // Search Filter 
   let Fuse = require('fuse.js');
 
@@ -65,6 +59,7 @@
     },
     mounted() {
       console.log("mounted")
+      console.log(userOs, 'here')
     },
     data() {
       return {
