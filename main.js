@@ -96,7 +96,7 @@ module.exports =
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".shortcut {\n    width: 100%;\n}\n\n.copy-element {\n  margin-bottom: 10px;\n}\n.copy-element__item {\n  padding: 8px 0px;\n  border-bottom: 1px solid #ddd;\n}\n\n.shortcut-name {\n  font-size: 16px;\n  font-weight: 100;\n}\n\n.shortcut-command {\n  font-size: 17px;\n  /* padding-top: 6px; */\n  color: black;\n  padding: 10px 0 0 0;\n  margin: 0;\n}\n.close-out {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end;\n  padding-bottom: 10px;\n}\n#cancel:hover {\n  opacity: 0.6;\n}\n\n.form-parent h1 {\n  padding-bottom: 10px;\n}\n\n.button-flex {\n  display: flex;\n  align-items: center;\n}", ""]);
+exports.push([module.i, ".shortcut {\n    width: 100%;\n}\n\n.copy-element {\n  margin-bottom: 10px;\n}\n.copy-element__item {\n  padding: 8px 0px;\n  border-bottom: 1px solid #ddd;\n}\n\n#plugin-title {\n  font-size: 14px;\n  margin-top: 10px;\n}\n\n.shortcut-name {\n  font-size: 16px;\n  font-weight: 100;\n}\n\n#result-error {\n  color: red;\n}\n\n.shortcut-command {\n  font-size: 17px;\n  /* padding-top: 6px; */\n  color: black;\n  padding: 10px 0 0 0;\n  margin: 0;\n}\n.close-out {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end;\n  padding-bottom: 10px;\n}\n#cancel:hover {\n  opacity: 0.6;\n}\n\n.form-parent h1 {\n  padding-bottom: 10px;\n}\n\n.button-flex {\n  display: flex;\n  align-items: center;\n}", ""]);
 
 
 
@@ -2227,13 +2227,11 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 //
 //
 //
+//
+//
 
-
-// To Dos 
-// Set up external endpoint to hit to render shortcuts
-// Endpoint url
-let url = "https://raw.githubusercontent.com/atokad5/keyboard-shortcut-list/master/endpoint.json";
-
+let url =
+  "https://raw.githubusercontent.com/atokad5/keyboard-shortcut-list/master/endpoint.json";
 
 // Fetch local shortcuts
 let shortcuts = __webpack_require__(/*! ./shortcuts.js */ "./src/shortcuts.js");
@@ -2241,33 +2239,29 @@ let shortcuts = __webpack_require__(/*! ./shortcuts.js */ "./src/shortcuts.js");
 // Check Operating System
 const os = __webpack_require__(/*! os */ "os");
 let userOs = os.platform();
-let isMacUser = userOs === "darwin";  // true || false (depends on user)
+let isMacUser = userOs === "darwin"; // true || false (depends on user)
 
 // Search Filter lib
 let Fuse = __webpack_require__(/*! fuse.js */ "./node_modules/fuse.js/dist/fuse.js");
-
 
 module.exports = {
   data() {
     return {
       connectionType: true,
       userType: isMacUser,
-      message: '',
-      title: 'Keyboard Shortcuts',
-      items: shortcuts, //  array of local data 
-      error: "No results",
-      noResults: false
-    }
+      message: "",
+      title: "Keyboard Shortcuts",
+      items: shortcuts, //  array of local data
+      noResults: ""
+    };
   },
   methods: {
-    close() {
-      this.dialog.close();
-    },
     showAll: function() {
-      this.message = '';
+      this.message = "";
+      this.noResults = "";
       this.items = shortcuts;
     },
-    submit : function(event) {
+    submit: function(event) {
       let fuse = new Fuse(shortcuts, {
         shouldSort: true,
         threshold: 0.6,
@@ -2275,22 +2269,19 @@ module.exports = {
         distance: 10,
         maxPatternLength: 32,
         minMatchCharLength: 0,
-        keys: [ "name", "tags"]
+        keys: ["name", "tags"]
       });
-      // if(this.message.length >= 1) {
-        if(this.items.length >= 1 ) {
-          this.items = fuse.search(this.message);
-          this.noResults = false;
-        } else {
-          this.noResults = true;
-        }
-        console.log(this.noResults)
-      // } else {
-      //   this.items = shortcuts;
-      // }
+
+      this.items = fuse.search(this.message);
+
+      if (this.items.length >= 1) {
+        this.noResults = "";
+      } else {
+        this.noResults = `No results for <span id="result-error">${this.message}</span>`;
+      }
     }
-  } 
-}
+  }
+};
 
 
 /***/ }),
@@ -2312,7 +2303,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "shortcut" }, [
     _c("div", { staticClass: "form-parent" }, [
-      _c("h1", [_vm._v(_vm._s(this.title))]),
+      _c("h1", { attrs: { id: "plugin-title" } }, [_vm._v(_vm._s(_vm.title))]),
       _vm._v(" "),
       _c("form", { on: { submit: _vm.submit } }, [
         _c("input", {
@@ -2367,9 +2358,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", [
-      _vm.noResults ? _c("h1", [_vm._v(_vm._s(_vm.error))]) : _vm._e()
-    ]),
+    _c("div", { domProps: { innerHTML: _vm._s(_vm.noResults) } }),
     _vm._v(" "),
     this.userType
       ? _c("div", [

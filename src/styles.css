@@ -10,9 +10,18 @@
   border-bottom: 1px solid #ddd;
 }
 
+#plugin-title {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
 .shortcut-name {
   font-size: 16px;
   font-weight: 100;
+}
+
+#result-error {
+  color: red;
 }
 
 .shortcut-command {

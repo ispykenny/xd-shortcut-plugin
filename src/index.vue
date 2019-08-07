@@ -1,18 +1,20 @@
 <template>
   <div class="shortcut">
     <div class="form-parent">
-      <h1>{{this.title}}</h1>
+      <h1 id="plugin-title">{{title}}</h1>
       <form v-on:submit="submit">
-        <input id="query" uxp-quiet="true" v-model="message"  placeholder="Search XD Shortcuts">
+        <input id="query" uxp-quiet="true" v-model="message" placeholder="Search XD Shortcuts" />
         <div class="button-flex">
-          <div style="width:100px;" v-if="this.message.length >= 1 ? true : false"><button v-on:click="showAll" uxp-primary="cta">Show All</button></div>
-          <div style="width:100px;"><button v-on:click="submit" uxp-variant="cta">Search</button></div>
+          <div style="width:100px;" v-if="this.message.length >= 1 ? true : false">
+            <button v-on:click="showAll" uxp-primary="cta">Show All</button>
+          </div>
+          <div style="width:100px;">
+            <button v-on:click="submit" uxp-variant="cta">Search</button>
+          </div>
         </div>
       </form>
     </div>
-    <div>
-      <h1 v-if="noResults">{{error}}</h1>
-    </div>
+    <div v-html="noResults"></div>
     <div v-if="this.userType">
       <div class="copy-element">
         <div v-for="item in items" :key="item.id">
@@ -21,7 +23,7 @@
             <p class="shortcut-command">{{item.macshortcut}}</p>
           </div>
         </div>
-      </div>  
+      </div>
     </div>
     <div v-else>
       <div class="copy-element">
@@ -31,75 +33,64 @@
             <p class="shortcut-command">{{item.pcshortcut}}</p>
           </div>
         </div>
-      </div>  
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+let url =
+  "https://raw.githubusercontent.com/atokad5/keyboard-shortcut-list/master/endpoint.json";
 
-  // To Dos 
-  // Set up external endpoint to hit to render shortcuts
-  // Endpoint url
-  let url = "https://raw.githubusercontent.com/atokad5/keyboard-shortcut-list/master/endpoint.json";
+// Fetch local shortcuts
+let shortcuts = require("./shortcuts.js");
 
+// Check Operating System
+const os = require("os");
+let userOs = os.platform();
+let isMacUser = userOs === "darwin"; // true || false (depends on user)
 
-  // Fetch local shortcuts
-  let shortcuts = require('./shortcuts.js');
+// Search Filter lib
+let Fuse = require("fuse.js");
 
-  // Check Operating System
-  const os = require('os');
-  let userOs = os.platform();
-  let isMacUser = userOs === "darwin";  // true || false (depends on user)
-
-  // Search Filter lib
-  let Fuse = require('fuse.js');
-
-
-  module.exports = {
-    data() {
-      return {
-        connectionType: true,
-        userType: isMacUser,
-        message: '',
-        title: 'Keyboard Shortcuts',
-        items: shortcuts, //  array of local data 
-        error: "No results",
-        noResults: false
-      }
+module.exports = {
+  data() {
+    return {
+      connectionType: true,
+      userType: isMacUser,
+      message: "",
+      title: "Keyboard Shortcuts",
+      items: shortcuts, //  array of local data
+      noResults: ""
+    };
+  },
+  methods: {
+    showAll: function() {
+      this.message = "";
+      this.noResults = "";
+      this.items = shortcuts;
     },
-    methods: {
-      close() {
-        this.dialog.close();
-      },
-      showAll: function() {
-        this.message = '';
-        this.items = shortcuts;
-      },
-      submit : function(event) {
-        let fuse = new Fuse(shortcuts, {
-          shouldSort: true,
-          threshold: 0.6,
-          location: 0,
-          distance: 10,
-          maxPatternLength: 32,
-          minMatchCharLength: 0,
-          keys: [ "name", "tags"]
-        });
-        // if(this.message.length >= 1) {
-          if(this.items.length >= 1 ) {
-            this.items = fuse.search(this.message);
-            this.noResults = false;
-          } else {
-            this.noResults = true;
-          }
-          console.log(this.noResults)
-        // } else {
-        //   this.items = shortcuts;
-        // }
+    submit: function(event) {
+      let fuse = new Fuse(shortcuts, {
+        shouldSort: true,
+        threshold: 0.6,
+        location: 0,
+        distance: 10,
+        maxPatternLength: 32,
+        minMatchCharLength: 0,
+        keys: ["name", "tags"]
+      });
+
+      this.items = fuse.search(this.message);
+
+      if (this.items.length >= 1) {
+        this.noResults = "";
+      } else {
+        this.noResults = `No results for <span id="result-error">${this.message}</span>`;
       }
-    } 
+    }
   }
+};
 </script>
 
 
