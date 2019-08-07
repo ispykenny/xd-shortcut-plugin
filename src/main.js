@@ -1,33 +1,25 @@
-global.setTimeout = function (fn) { fn() }
-global.clearTimeout = function () { };
-
 const styles = require("./styles.css");
 const Vue = require("vue").default;
 const index = require("./index.vue").default
 
 
-function show(e) {
+const show = event => {
   document.body.innerHTML = `<div id="container"></div>`
-  var app4 = new Vue({
+  let app4 = new Vue({
     el: "#container",
-    components: { index },
+    components: { 
+      index 
+    },
     render(h) {
       return h(index)
     }
   })
 }
 
-function hide () {
-  console.log('hiding')
-}
-
-function update(e) {
-  console.log('updating')
-}
-
+const hide = () => console.log('hiding');
 
 module.exports = {
   panels: {
-    "fetchShortCuts": {show, hide, update}
+    "fetchShortCuts": {show, hide}
   }
 };

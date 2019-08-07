@@ -2224,6 +2224,9 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 //
 //
 //
+//
+//
+//
 
 
 // To Dos 
@@ -2251,7 +2254,9 @@ module.exports = {
       userType: isMacUser,
       message: '',
       title: 'Keyboard Shortcuts',
-      items: shortcuts //  array of local data 
+      items: shortcuts, //  array of local data 
+      error: "No results",
+      noResults: false
     }
   },
   methods: {
@@ -2272,11 +2277,17 @@ module.exports = {
         minMatchCharLength: 0,
         keys: [ "name", "tags"]
       });
-      if(this.message.length >= 1) {
-        this.items = fuse.search(this.message);
-      } else {
-        this.items = shortcuts;
-      }
+      // if(this.message.length >= 1) {
+        if(this.items.length >= 1 ) {
+          this.items = fuse.search(this.message);
+          this.noResults = false;
+        } else {
+          this.noResults = true;
+        }
+        console.log(this.noResults)
+      // } else {
+      //   this.items = shortcuts;
+      // }
     }
   } 
 }
@@ -2354,6 +2365,10 @@ var render = function() {
           ])
         ])
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _vm.noResults ? _c("h1", [_vm._v(_vm._s(_vm.error))]) : _vm._e()
     ]),
     _vm._v(" "),
     this.userType
@@ -10731,41 +10746,32 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {global.setTimeout = function (fn) { fn() }
-global.clearTimeout = function () { };
-
 const styles = __webpack_require__(/*! ./styles.css */ "./src/styles.css");
 const Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js").default;
 const index = __webpack_require__(/*! ./index.vue */ "./src/index.vue").default
 
 
-function show(e) {
+const show = event => {
   document.body.innerHTML = `<div id="container"></div>`
-  var app4 = new Vue({
+  let app4 = new Vue({
     el: "#container",
-    components: { index },
+    components: { 
+      index 
+    },
     render(h) {
       return h(index)
     }
   })
 }
 
-function hide () {
-  console.log('hiding')
-}
-
-function update(e) {
-  console.log('updating')
-}
-
+const hide = () => console.log('hiding');
 
 module.exports = {
   panels: {
-    "fetchShortCuts": {show, hide, update}
+    "fetchShortCuts": {show, hide}
   }
 };
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 

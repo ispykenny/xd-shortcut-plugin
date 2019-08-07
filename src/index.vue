@@ -3,12 +3,15 @@
     <div class="form-parent">
       <h1>{{this.title}}</h1>
       <form v-on:submit="submit">
-        <input id="query" uxp-quiet="true" v-model="message" placeholder="Search XD Shortcuts">
+        <input id="query" uxp-quiet="true" v-model="message"  placeholder="Search XD Shortcuts">
         <div class="button-flex">
           <div style="width:100px;" v-if="this.message.length >= 1 ? true : false"><button v-on:click="showAll" uxp-primary="cta">Show All</button></div>
           <div style="width:100px;"><button v-on:click="submit" uxp-variant="cta">Search</button></div>
         </div>
       </form>
+    </div>
+    <div>
+      <h1 v-if="noResults">{{error}}</h1>
     </div>
     <div v-if="this.userType">
       <div class="copy-element">
@@ -60,7 +63,9 @@
         userType: isMacUser,
         message: '',
         title: 'Keyboard Shortcuts',
-        items: shortcuts //  array of local data 
+        items: shortcuts, //  array of local data 
+        error: "No results",
+        noResults: false
       }
     },
     methods: {
@@ -81,11 +86,17 @@
           minMatchCharLength: 0,
           keys: [ "name", "tags"]
         });
-        if(this.message.length >= 1) {
-          this.items = fuse.search(this.message);
-        } else {
-          this.items = shortcuts;
-        }
+        // if(this.message.length >= 1) {
+          if(this.items.length >= 1 ) {
+            this.items = fuse.search(this.message);
+            this.noResults = false;
+          } else {
+            this.noResults = true;
+          }
+          console.log(this.noResults)
+        // } else {
+        //   this.items = shortcuts;
+        // }
       }
     } 
   }
