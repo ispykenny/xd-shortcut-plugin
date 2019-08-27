@@ -2,7 +2,7 @@
   "name" : "Keyboard Shortcuts",
   "host": {
     "app": "XD",
-    "minVersion": "13.0"
+    "minVersion": "21.0"
   },
   "description" : "Quickly search any XD keyboard shortcut with this plugin.",
   "summary": "find keyboard shortcuts",
@@ -32,5 +32,5 @@
       "panelId": "fetchShortCuts"
     }
   ],
-  "version" : "2.1.0"
+  "version" : "2.1.1"
 }
