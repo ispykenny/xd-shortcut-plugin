@@ -66,7 +66,6 @@ module.exports = {
   },
   methods: {
     showAll: function() {
-      console.log('im here')
       this.message = "";
       this.noResults = "";
       this.items = shortcuts;
@@ -83,7 +82,6 @@ module.exports = {
       });
 
       this.items = fuse.search(this.message);
-      console.log(this.message.length)
       if (this.items.length >= 1) {
         this.noResults = "";
       } else {
