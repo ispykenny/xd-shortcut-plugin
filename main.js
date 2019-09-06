@@ -96,7 +96,7 @@ module.exports =
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".shortcut {\r\n    width: 100%;\r\n}\r\n\r\n.copy-element {\r\n  margin-bottom: 10px;\r\n}\r\n.copy-element__item {\r\n  padding: 14px 0px;\r\n  border-bottom: 1px solid #ddd;\r\n}\r\n\r\n#plugin-title {\r\n  font-size: 14px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.shortcut-name {\r\n  font-size: 14px;\r\n  font-weight: 100;\r\n}\r\n\r\n#result-error {\r\n  color: red;\r\n}\r\n\r\n.shortcut-command {\r\n  font-size: 14px;\r\n  color: black;\r\n  padding: 10px 0 0 0;\r\n  margin: 0;\r\n  margin-left: 0px;\r\n  padding-left: 0px;\r\n}\r\n.close-out {\r\n  display: flex;\r\n  width: 100%;\r\n  justify-content: flex-end;\r\n  padding-bottom: 10px;\r\n}\r\n#cancel:hover {\r\n  opacity: 0.6;\r\n}\r\n\r\n.form-parent {\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.form-parent h1 {\r\n  padding-bottom: 10px;\r\n}\r\n\r\n.button-flex {\r\n  display: flex;\r\n  align-items: center;\r\n}", ""]);
+exports.push([module.i, ".shortcut {\n  width: 100%;\n}\n\n.copy-element {\n  margin-bottom: 10px;\n}\n.copy-element__item {\n  padding: 14px 0px;\n  border-bottom: 1px solid #ddd;\n}\n\n#plugin-title {\n  font-size: 14px;\n  margin-top: 20px;\n}\n\n.shortcut-name {\n  font-size: 14px;\n  font-weight: 100;\n}\n\n#result-error {\n  color: red;\n}\n\n.shortcut-command {\n  font-size: 14px;\n  color: black;\n  padding: 10px 0 0 0;\n  margin: 0;\n  margin-left: 0px;\n  padding-left: 0px;\n}\n.close-out {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end;\n  padding-bottom: 10px;\n}\n#cancel:hover {\n  opacity: 0.6;\n}\n\n.form-parent {\n  margin-bottom: 10px;\n}\n\n.form-parent h1 {\n  padding-bottom: 10px;\n}\n\n.button-flex {\n  display: flex;\n  align-items: center;\n}", ""]);
 
 
 
@@ -2257,7 +2257,6 @@ module.exports = {
   },
   methods: {
     showAll: function() {
-      console.log('im here')
       this.message = "";
       this.noResults = "";
       this.items = shortcuts;
@@ -2272,9 +2271,7 @@ module.exports = {
         minMatchCharLength: 0,
         keys: ["name", "tags"]
       });
-
       this.items = fuse.search(this.message);
-      console.log(this.message.length)
       if (this.items.length >= 1) {
         this.noResults = "";
       } else {
@@ -2320,6 +2317,7 @@ var render = function() {
               expression: "message"
             }
           ],
+          staticStyle: { width: "100%" },
           attrs: {
             id: "query",
             "uxp-quiet": "true",

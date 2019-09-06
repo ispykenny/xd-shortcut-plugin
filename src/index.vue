@@ -3,7 +3,7 @@
     <div class="form-parent">
       <h1 id="plugin-title">{{title}}</h1>
       <form v-on:submit="submit">
-        <input id="query" uxp-quiet="true" v-model="message" placeholder="Search XD Shortcuts" />
+        <input id="query" uxp-quiet="true" v-model="message" placeholder="Search XD Shortcuts" style="width: 100%;"/>
         <div class="button-flex">
           <div style="width:100px;" v-if="this.message.length >= 0 ? true : false">
             <button v-on:click="showAll" uxp-primary="cta">Show All</button>
@@ -66,7 +66,6 @@ module.exports = {
   },
   methods: {
     showAll: function() {
-      console.log('im here')
       this.message = "";
       this.noResults = "";
       this.items = shortcuts;
@@ -81,9 +80,7 @@ module.exports = {
         minMatchCharLength: 0,
         keys: ["name", "tags"]
       });
-
       this.items = fuse.search(this.message);
-      console.log(this.message.length)
       if (this.items.length >= 1) {
         this.noResults = "";
       } else {

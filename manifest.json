@@ -15,7 +15,7 @@
   "languages": [
       "en"
   ],
-  "website": "https://helpx.adobe.com/xd/help/keyboard-shortcuts.html",
+  "website": "https://kennykrosky.com",
   "author": "Kenny Krosky & Raghu Thricovil",
   "helpUrl": "https://twitter.com/ispykenny",
   "icons": [
@@ -32,5 +32,5 @@
       "panelId": "fetchShortCuts"
     }
   ],
-  "version" : "2.1.1"
+  "version" : "2.1.2"
 }
